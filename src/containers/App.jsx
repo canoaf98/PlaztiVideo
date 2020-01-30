@@ -24,16 +24,11 @@ const App = () => {
               return (
                 <CarouselItem
                   key={id}
-                  slug={slug}
                   title={title}
-                  type={type}
-                  language={language}
                   year={year}
                   contentRating={contentRating}
                   duration={duration}
                   cover={cover}
-                  description={description}
-                  source={source}
                 />
               );
             })}
@@ -47,16 +42,11 @@ const App = () => {
               return (
                 <CarouselItem
                   key={id}
-                  slug={slug}
                   title={title}
-                  type={type}
-                  language={language}
                   year={year}
                   contentRating={contentRating}
                   duration={duration}
                   cover={cover}
-                  description={description}
-                  source={source}
                 />
               );
             })}
@@ -70,16 +60,11 @@ const App = () => {
               return (
                 <CarouselItem
                   key={id}
-                  slug={slug}
                   title={title}
-                  type={type}
-                  language={language}
                   year={year}
                   contentRating={contentRating}
                   duration={duration}
                   cover={cover}
-                  description={description}
-                  source={source}
                 />
               );
             })}
