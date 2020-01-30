@@ -5,25 +5,22 @@ import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
+import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
+const API = 'http://localhost:3000/initalState';
+
 const App = () => {
-  const API = 'http://localhost:3000/initalState';
-  const [videos, setVideos] = useState({mylist: [], trends: [], originals: []});
-  useEffect(() => {
-    fetch(API)
-      .then((response) => response.json())
-      .then((data) => setVideos(data));
-  }, []);
-  console.log(videos);
-  return (
+  const initalState = useInitialState(API);
+
+  return (Object.keys(initalState).length > 0) && (
     <div className='App'>
       <Header />
       <Search />
-      {videos.mylist.length > 0 && (
+      {initalState.mylist.length > 0 && (
         <Categories title='Mi lista'>
           <Carousel>
-            {videos.mylist.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
+            {initalState.mylist.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
               return (
                 <CarouselItem
                   key={id}
@@ -43,10 +40,10 @@ const App = () => {
           </Carousel>
         </Categories>
       )}
-      {videos.trends.length > 0 && (
+      {initalState.trends.length > 0 && (
         <Categories title='Tendencias'>
           <Carousel>
-            {videos.trends.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
+            {initalState.trends.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
               return (
                 <CarouselItem
                   key={id}
@@ -66,10 +63,10 @@ const App = () => {
           </Carousel>
         </Categories>
       )}
-      {videos.originals.length > 0 && (
+      {initalState.originals.length > 0 && (
         <Categories title='Originales'>
           <Carousel>
-            {videos.originals.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
+            {initalState.originals.map(({ id, slug, title, type, language, year, contentRating, duration, cover, description, source }) => {
               return (
                 <CarouselItem
                   key={id}
