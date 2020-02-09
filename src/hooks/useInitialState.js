@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 const useInitialState = (API) => {
   // const API = 'http://localhost:3000/initalState';
