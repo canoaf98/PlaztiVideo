@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/user-icon.png';
@@ -22,8 +23,7 @@ const Header = (props) => {
         <div className='header__menu--profile'>
           { hasUser ?
             <img src={gravatar(user.email)} alt={user.email} /> :
-            <img src={userIcon} alt='Default user icon' />
-          }
+            <img src={userIcon} alt='Default user icon' /> }
           <p>Perfil</p>
         </div>
         <ul>
@@ -39,6 +39,11 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  user: PropTypes.object,
+  logoutRequest: PropTypes.func,
+};
+
 const mapDispatchToProps = {
   logoutRequest,
 };
@@ -47,5 +52,6 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
   };
-}
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
