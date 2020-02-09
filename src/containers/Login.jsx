@@ -10,7 +10,6 @@ const Login = (props) => {
   const { history, loginRequest } = props;
   const [form, setValues] = useState({
     email: '',
-
   });
   const handleInput = (event) => {
     setValues({
